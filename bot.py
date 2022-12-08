@@ -44,7 +44,7 @@ def main():
     dp.add_handler(CallbackQueryHandler(show_calendar))
     jq = bot.job_queue
     jq.run_repeating(check_db, interval=86400, first=86400)
-    jq.run_monthly(add_default_slots, day=1, when=time(1, 0))
+    jq.run_monthly(add_default_slots, day=10, when=time(1, 0))
 
     bot.start_polling()
     bot.idle()
