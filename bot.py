@@ -1,6 +1,6 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler, CallbackQueryHandler
-from handlers import greet_user, show_price, show_menu, add_reserve, get_phone,\
-    get_date, save_date, show_calendar, show_all_clients, del_slot
+from handlers import greet_user, show_price, show_menu, add_reserve, get_phone, \
+    get_date, save_date, show_calendar, show_all_clients, del_slot, admin_contact
 import settings
 from jobs import check_db
 from db import add_default_slots
@@ -18,6 +18,7 @@ def main():
     dp.add_handler(MessageHandler(Filters.regex('^(Меню)$'), greet_user))
     dp.add_handler(MessageHandler(Filters.regex('^(Прайс)$'), show_price))
     dp.add_handler(MessageHandler(Filters.regex('^(Мои записи)$'), show_all_clients))
+    dp.add_handler(MessageHandler(Filters.regex('^(Связаться с нами)$'), admin_contact))
 
     conv = ConversationHandler(
         entry_points=[

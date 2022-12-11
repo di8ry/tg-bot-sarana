@@ -6,10 +6,14 @@ from db import add_user, db
 from bson.objectid import ObjectId
 
 
+def admin_contact(update, context):
+    update.message.reply_text('Контакт мастера: @saranasarana')
+
+
 def add_reserve(update, context):
     context.user_data['username'] = update.message.chat.username
     update.message.reply_text(
-        'Введите Ваше имя: ',
+        'Введите Ваше имя и телеграмм имя для обратной связи: ',
         reply_markup=conv_menu(del_back_btn=True),
     )
     return 'name'
@@ -139,7 +143,7 @@ def show_calendar(update, context):
         context.user_data['hours'] = data
         old_text = '\n'.join(update.callback_query.message.text.split('\n')[:-1])
         update.callback_query.message.edit_text(
-            f'Вы, {name} записаны на\n{old_text}\nДень: {data}\nЕсли что, позвоним на {phone}.',
+            f'Вы, {name} записаны на\n{old_text}\nДень: {data}\nЕсли что, свяжемся с вами по телефону или через телеграмм.',
         )
         add_user(user_id, name, phone,
                  f"{context.user_data['day']}-{context.user_data['month']}-{context.user_data['year']} {context.user_data['hours']}",
@@ -152,7 +156,7 @@ def show_all_clients(update, context):
     for row in all_rows:
         context.bot.send_message(
             chat_id=ADMINS[0],
-            text=f'{row["name"]}, {row["phone"]}, {row["date"]}',
+            text=f'{row["name"]}, {row["phone"]}, {row["date"]}, {row["service"]}',
             reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton('Удалить', callback_data='Удалить ' + str(row['_id']))]]
             )

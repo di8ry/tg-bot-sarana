@@ -42,7 +42,7 @@ def free_slots(date):
         })
 
 
-def add_default_slots(context):
+def add_default_slots():
     now = datetime.now()
     for day in range(1, 91):
         date = now + timedelta(days=day)
