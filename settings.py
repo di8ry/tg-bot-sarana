@@ -1,7 +1,7 @@
 API_TOKEN = '5503896188:AAGSbGnweXVBkCkEWX2KD-WQjqqfdpCtKpk'
 
 DB_PASS = 'p8FbmdnlqanXbhhF'
-ADMINS = [5376683079, 731085242, 886588489]
+ADMINS = [731085242]
 
 PRICES = {
     'Наращивание ресниц': [
