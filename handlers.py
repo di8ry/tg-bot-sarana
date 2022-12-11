@@ -10,6 +10,10 @@ def admin_contact(update, context):
     update.message.reply_text('Контакт мастера: @saranasarana')
 
 
+def example(update, context):
+    update.message.reply_text('https://instagram.com/yourdream_lashes_phuket?igshid=MWI4MTIyMDE=')
+
+
 def add_reserve(update, context):
     context.user_data['username'] = update.message.chat.username
     update.message.reply_text(
