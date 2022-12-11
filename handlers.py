@@ -37,7 +37,7 @@ def get_date(update, context):
         context.user_data['phone'] = update.message.contact.phone_number
         context.user_data['all_slots'] = list(db.free_slots.find({}))
         update.message.reply_text(
-            'Укажите дату приёма: ',
+            'Укажите дату приёма(Запись на ресницы декабрь уже полная и недоступна): ',
             reply_markup=choose_date(),
         )
         return 'date'
